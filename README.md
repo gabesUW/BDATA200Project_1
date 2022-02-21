@@ -1,4 +1,4 @@
-# BDATA200Project_1
+# BDATA200 Project 1
 How are flight delay and Route Related? 
 In this project three different functions were developed, **originDelays**, **plotter**, and **ols_models**.
 
@@ -10,9 +10,9 @@ which probability distribution best models the data.
 **ols_models** is a function performs an ordinary least squares regression on two variables
 
 
-## main.ipynb
+## [main](main.ipynb)
 This is where a description of the code and examples are kept. The code included in the cells in main.ipynb can also be accessed as raw python code 
 in another accompanying file.
 
-## Airline Dataset Analysis.py
+## [code](code.py)
 This file is the raw python code used in the project, it does not include notebook formatting like the main file.
