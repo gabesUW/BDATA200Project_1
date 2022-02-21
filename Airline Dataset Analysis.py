@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[2]:
-
 import statsmodels.formula.api as smf
 import pandas as pd 
 import matplotlib.pyplot as plt
@@ -11,15 +6,22 @@ import statsmodels.api as sm
 import scipy.stats as stats
 import pylab
 data_path = "airline_2m.csv"
-data = pd.read_csv(data_path, encoding = "ISO-8859-1",
-                 dtype={'Div1Airport': str, 'Div1TailNum': str, 'Div2Airport': str, 'Div2TailNum': str})
+#CSV Can be directly downloaded as a tar file here: 
+
+#https://dax-cdn.cdn.appdomain.cloud/dax-airline/1.0.1/airline_2m.tar.gz?_ga=2.241493383.460169643.1645306071-17791737.1643504108
+
 # Credit to IBM's Airline Dataset for the data and encoding code.
 
 
-# In[77]:
-
+data = pd.read_csv(data_path, encoding = "ISO-8859-1",
+                 dtype={'Div1Airport': str, 'Div1TailNum': str, 'Div2Airport': str, 'Div2TailNum': str})
+#Code Provided By IBMs Airline Reporting Carrier on-time performance set. 
+#This helps python better interpret the data frame because it is not encoded in UTF-8 
+#An alternative to this could be to actually change the file to be encoded in UTF-8
+#but this was difficult to do with how big the file was.
 
 sample = data.sample(10000)
+#Create Sample For Examples
 
 
 def originDelays(df, orig, desto):
@@ -38,14 +40,11 @@ def originDelays(df, orig, desto):
     originSubset = originSubset[originSubset['Dest'] == desto ]
     #Shaves the DataFrame so that we are just looking at origin rows
     #Then cuts out desired destinations.
-
-    
     
     print(originSubset['Origin'])
-    print(originSubset['Dest'])
     #Print Statement To verify the Origin
+    print(originSubset['Dest'])
     #Print Statement to verify the Destination
-    
 
     arvl_delay = originSubset['ArrDelay'].fillna(0)
     #Takes out the Arrival Delay column, adds 0 for the NA spots 
@@ -80,10 +79,6 @@ def originDelays(df, orig, desto):
     plt.show()
 
 
-
-# In[82]:
-
-
 def plotter(dataFrame, xColumn, yColumn):
     """
     This function takes in a dataframe, and two column names to 
@@ -103,9 +98,6 @@ plotter(sample,'AirTime','Distance')
 #Example Call of Plotter
 
 
-# In[56]:
-
-
 def ols_model(df,x, y):
     """
     This Function takes in a dataframe and two columns of that 
@@ -119,4 +111,5 @@ def ols_model(df,x, y):
     return 
   
 ols_model(sample, sample['ArrDelay'],sample['Distance'])
+#Example Call ols_model
 
